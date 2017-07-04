@@ -26,11 +26,11 @@ render(){
 		
 
 		<div className="container row">
-			<LocalLogin userLogin={this.props.userLogin} />
+			<LocalLogin userLogin={this.props.userLogin} setUser={this.props.setUser}/>
 		</div>
 
 		<div className="container row">
-			<GoogleLogin userLogin={this.props.userLogin} />
+			<GoogleLogin userLogin={this.props.userLogin} setUser={this.props.setUser}/>
 		</div>
 
 

@@ -23,6 +23,7 @@ class Main extends React.Component {
       show: false
     }
 
+    this.setUser = this.setUser.bind(this);
     this.userUpdate = this.userUpdate.bind(this);
     this.userLogin = this.userLogin.bind(this);
     this.getMyMeal = this.getMyMeal.bind(this);
@@ -31,8 +32,9 @@ class Main extends React.Component {
 
   }
 
-
-
+  setUser(user_id) {
+    this.setState({user: user_id});
+  }
 
   showModal() {
     this.setState({
@@ -85,12 +87,12 @@ class Main extends React.Component {
           <Header />
         </div>
         { /*This is our main component and we will need to specify what we're going to render here depending on what information is present.
-                    If there is a user then setup a function to take the current user info from google and render the app else we should propably have another file that has our
-                    running app components in it.  So you will either get the first instance of our main app or the login screen..... we will need to pass the user state
-                    using function to run on submit to pass user info back here so we can pass it around as props for the app.
-                  */ }
+                                    If there is a user then setup a function to take the current user info from google and render the app else we should propably have another file that has our
+                                    running app components in it.  So you will either get the first instance of our main app or the login screen..... we will need to pass the user state
+                                    using function to run on submit to pass user info back here so we can pass it around as props for the app.
+                                  */ }
         <div className="row">
-          { this.state.isLoggedIn ? <CentralPage getMyMeal={ this.getMyMeal } meal={ this.state.meal } show={ this.state.show } hideModal={ this.hideModal } /> : <MainLogin userLogin={ this.userLogin } /> }
+          { this.state.isLoggedIn ? <CentralPage getMyMeal={ this.getMyMeal } meal={ this.state.meal } user_id={this.state.user} show={ this.state.show } hideModal={ this.hideModal } /> : <MainLogin userLogin={ this.userLogin } setUser = {this.setUser} /> }
         </div>
       </div>
     )
