@@ -22,12 +22,13 @@ var helper = {
 	//it receives an array of objects
 	
 	sendDays(user_id, days) {
-		axios.post(`/user/`, days)
+		axios.post(`/user/days`, days)
       .then((data) => {
 		  
           console.log('sending back days:',data);
 		  return data;
       });
+
 	},
 	// ****************************************YELP API CALLS BELLOW*******************************************
 	

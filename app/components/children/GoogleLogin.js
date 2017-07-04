@@ -41,11 +41,11 @@ class GoogleLogin extends React.Component {
           "how id property looks when compWillMount func is called:",
           this.state.isLoggedIn
         );
-        this.props.userLogin(this.state.isLoggedIn);
+        // this.props.userLogin(this.state.isLoggedIn);
       }.bind(this)
     );
 
-    this.props.userLogin(this.state.isLoggedIn);
+    // this.props.userLogin(this.state.isLoggedIn);
 
     // console.log(this.state);
   }

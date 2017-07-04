@@ -17,6 +17,8 @@ this.state = {
 
 
 render(){
+{{/*userLogin={this.props.userLogin}*/}} 
+{{/*userLogin={this.props.userLogin}*/}} 
 	return (
 		<div className="container">
 
@@ -26,11 +28,11 @@ render(){
 		
 
 		<div className="container row">
-			<LocalLogin userLogin={this.props.userLogin} setUser={this.props.setUser}/>
+			<LocalLogin setUser={this.props.setUser}/>
 		</div>
 
 		<div className="container row">
-			<GoogleLogin userLogin={this.props.userLogin} setUser={this.props.setUser}/>
+			<GoogleLogin setUser={this.props.setUser}/>
 		</div>
 
 

@@ -45,7 +45,7 @@ class LocalLogin extends React.Component {
           loggedIn: login
         });
         console.log(this.state.loggedIn);
-        this.props.userLogin(this.state.loggedIn);
+        // this.props.userLogin(this.state.loggedIn);
       }.bind(this)
     );
   }
