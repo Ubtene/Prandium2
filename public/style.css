@@ -1,0 +1,194 @@
+/*//////////////////Entiresite//////////////////////*/
+
+body {
+    background-color: white;
+    margin: 0 auto;
+    background-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    font-weight: normal;
+    padding: 0;
+    font-family: 'Harmonia Sans';
+}
+
+legend {
+    color: grey;
+}
+
+label {
+    margin-right: 3%;
+}
+
+select {
+    width: 100%;
+}
+
+.btn {
+    background-color: coral;
+    letter-spacing: 1.5px;
+    color: white;
+    border: 2px solid red;
+}
+
+.panel-body {
+    width: 100%;
+}
+
+
+/*///////////////////    HEADER      ////////////////////*/
+
+#header {
+    background-image: url(https://www.freshologize.ca/wp-content/uploads/2015/06/meal-plan-bg.jpg?id=1772);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: coral;
+    color: red;
+    text-shadow: 5px 5px 10px black;
+    text-align: center;
+}
+
+
+/*////////////////////        USERFORM         ////////////////////*/
+
+#loginTitle {
+    float: left;
+    color: blue;
+}
+
+#top {
+    width: 95%;
+}
+
+#checkbox {
+    display: flex;
+    flex-direction: row;
+}
+
+#form {
+	width: 70%;
+   	margin: 0 auto;
+	background-color: white;
+
+}
+
+span{
+	/*float: left;*/
+    
+	margin-bottom: 3px;
+
+}
+
+/*//////////////    YelpSearch     ////////////////////////*/
+
+#yelpForm {
+	
+	
+	margin: 0 auto;
+	margin-top: 50px;
+    background-color: white;
+    width: 80%;
+}
+
+#restaurantsearch {
+	width: 40%;
+    border: 0;
+    float: left;
+}
+
+#rsContainer {
+    padding: 0;
+}
+
+#yelpSubmit {
+
+	float: right;
+}
+
+
+/*/////////////////   YELP RESULTS     //////////////////////////*/
+
+#reswell {
+    width: 75%;
+    font-family: 'Harmonia Sans';
+    font-size: 26px;
+    padding: 8%;
+}
+
+#yelpResults {
+	margin: 0 auto;
+	width: 80%;
+}
+
+#roundedImage {
+   margin-bottom: 20px;
+ 
+}
+
+#resetYelp {
+    width: 150px;
+    background-color: white;
+    color: skyblue;
+    font-weight: 700;
+    border-color: skyblue;
+    letter-spacing: 6px;
+
+}
+
+
+/*////////////////////  NAV  /////////////////////////////*/
+
+#nav {
+    display: inline-flex;
+}
+
+
+
+.googleLogin {
+    background-color: dodgerblue;
+    width: 100%;
+}
+
+#googleLoginDiv{
+    text-align: center;
+
+}
+
+
+/*//////////////////////      Day         /////////////////////////////*/
+
+#day-wrapper {
+    /*clear: all;*/
+    width: 13%;
+    float: left;
+    margin-right: 1%;
+    border: 0;
+    padding: 0;
+}
+
+#day-wrapper: last-child {
+    margin-right: 0;
+}
+
+#yelpInMeals {
+    clear: all;
+    border-top: 10px;
+}
+
+
+/*#left {
+    color: red;
+    margin: 0 auto;
+/*    float: left;*/
+    width: 15%;
+  
+}*/
+
+/*#right {
+        color: blue;
+        background-color: red;
+        float: left;
+        clear: both;
+        width: 100%;
+     
+}*/
