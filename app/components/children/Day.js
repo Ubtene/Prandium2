@@ -20,7 +20,7 @@ export const Day = (props) => {
 
 
 
-      <img className="meal-img" alt="Image of meal" src="" />
+      <img className="meal-img" alt="Image of meal" src={props.image} />
      {/* <button>Update Meals</button>*/}
     </div>
   );

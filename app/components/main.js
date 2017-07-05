@@ -21,6 +21,7 @@ class Main extends React.Component {
       meal: '',
       img: '',
       instructions: "",
+      ingredients: "",
       show: false,
       userInfo: false,
       userMeals: [] 
@@ -81,12 +82,13 @@ class Main extends React.Component {
   //   console.log("In main js");
   // }
 
-  getMyMeal(day, meal, img, instructions) {
+  getMyMeal(day, meal, img, instructions, ingredients) {
     this.setState({
       day: day,
       meal: meal,
       img: img,
       instructions: instructions,
+      ingredients: ingredients,
       show: true
     })
   }
@@ -110,7 +112,24 @@ class Main extends React.Component {
                                      <FormOrLogin setUser={this.setUser} setUserInfo={this.setUserInfo} userInfo={this.state.userInfo}
                                   */ }
         <div className="row">
-          { this.state.user ? <CentralPage getMyMeal={ this.getMyMeal } meal={ this.state.meal } user={this.state.user} show={ this.state.show } hideModal={ this.hideModal } userInfo={this.state.userInfo} setUserInfo={ this.setUserInfo} setUserMeals={this.setUserMeals} userMeals={this.state.userMeals} /> : <MainLogin setUser={this.setUser} /> }
+          { this.state.user ? 
+            <CentralPage 
+            getMyMeal={ this.getMyMeal } 
+            day={this.state.day}
+            meal={ this.state.meal } 
+            img={this.state.img}
+            instructions={this.state.instructions}
+            ingredients={this.state.ingredients}
+            user={this.state.user} 
+            show={ this.state.show } 
+            hideModal={ this.hideModal } 
+            userInfo={this.state.userInfo} 
+            setUserInfo={ this.setUserInfo} 
+            setUserMeals={this.setUserMeals} 
+            userMeals={this.state.userMeals}
+             /> : 
+             <MainLogin 
+             setUser={this.setUser} /> }
         </div>
       </div>
     )

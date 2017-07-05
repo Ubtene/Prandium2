@@ -176,19 +176,26 @@ span{
 }
 
 
-/*#left {
-    color: red;
-    margin: 0 auto;
-/*    float: left;*/
-    width: 15%;
-  
-}*/
+/*/////////////////////          DAYS       ///////////////////*/
 
-/*#right {
-        color: blue;
-        background-color: red;
-        float: left;
-        clear: both;
-        width: 100%;
-     
-}*/
+.meal-img{
+
+    height: 85%;
+    width: 100%;
+
+}
+
+#day-wrapper {
+    float: left;
+    /*max-width: 30%;*/
+    height: 150px;
+    width: 250px;
+}
+
+#calendar-wrapper{
+    overflow: auto;
+}
+
+.lunch {
+    width: 100%;
+}
