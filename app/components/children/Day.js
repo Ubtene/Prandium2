@@ -12,7 +12,7 @@ export const Day = (props) => {
       <div className="meals">
 
         <div className="lunch">
-          {props.lunch}
+          {props.meal}
         {/*  <button className="">Delete Meal</button>*/}
         </div>
 
