@@ -29,7 +29,7 @@ class GoogleLogin extends React.Component {
       function(result) {
         console.log(
           "Results from helpers.getGoogle Promise in the ComponentWillMount func:",
-          result
+          result.data
         );
         console.log('helpers google');
         console.log(result.data.Googleid);

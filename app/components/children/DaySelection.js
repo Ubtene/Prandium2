@@ -106,7 +106,7 @@ class DaySelection extends React.Component {
      console.log('Days Selected:', daysSelected);
      
     //  send days using axios calls
-     helpers.sendDays(this.props.user, daysSelected);
+     helpers.sendDays(this.props.user.data.userID, daysSelected);
      this.props.thisHasMeals("true");
   }
 

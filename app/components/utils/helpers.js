@@ -26,9 +26,9 @@ var helper = {
 
 	// ===========axios call to allow user to specify days (using checkboxes)=========
 	//it receives an array of objects
-	
+
 	sendDays(user_id, days) {
-		axios.post(`/user/days`, {user_id: user_id, days:days})
+		axios.post(`/user/days`, {days: {days: days, googleId:user_id}})
       .then((data) => {
 		  
           console.log('sending back days:',data);

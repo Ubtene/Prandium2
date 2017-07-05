@@ -25,7 +25,9 @@ module.exports = function(app) {
   app.post("/user/days", (req, res) => {
 
     console.log("got here");
-
+    console.log(req.body);
+    console.log(req.body.days.days[0]);
+    console.log(req.body.days.days[1]);
    var userID = req.body.user_id;
   
     console.log(userID);
@@ -35,7 +37,7 @@ module.exports = function(app) {
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
    
-      console.log(results);
+      // console.log(results);
       // var mealProperty = results[0].meals;
 
       // for (i = 0; i < days.length; i++) {
