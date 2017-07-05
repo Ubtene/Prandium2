@@ -42,6 +42,11 @@ module.exports = function(app) {
 
         days[i].meal = mealProperty[i];
       }
+      
+         userMeals.update({ userID: userID }, { $set: { mealsForTheWeek: days } })
+        .then(function(doc) {
+   console.log(doc);
+        });
 
 // Initiate shuffle
       var shuffledMeals = _.shuffle(mealProperty);
