@@ -1,14 +1,16 @@
 /*//////////////////Entiresite//////////////////////*/
 
 body {
-    background-color: white;
+    /*background-color: white;*/
     margin: 0 auto;
     background-size: 100%;
     font-family: Arial, Helvetica, sans-serif;
     color: grey;
     font-weight: normal;
     padding: 0;
+    height: 100%;
     font-family: 'Harmonia Sans';
+    box-sizing: border-box;
 }
 
 legend {
@@ -38,14 +40,19 @@ select {
 /*///////////////////    HEADER      ////////////////////*/
 
 #header {
-    background-image: url(https://www.freshologize.ca/wp-content/uploads/2015/06/meal-plan-bg.jpg?id=1772);
+    /*background-image: url(https://www.freshologize.ca/wp-content/uploads/2015/06/meal-plan-bg.jpg?id=1772);
     background-size: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     color: coral;
     color: red;
     text-shadow: 5px 5px 10px black;
-    text-align: center;
+    text-align: center;*/
+    height: 7vh;
+    width: 100%;
+    background: #000000;
+    opacity: .6;
+    margin: 0;
 }
 
 
@@ -66,32 +73,28 @@ select {
 }
 
 #form {
-	width: 70%;
-   	margin: 0 auto;
-	background-color: white;
-
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
 }
 
-span{
-	/*float: left;*/
-    
-	margin-bottom: 3px;
-
+span {
+    /*float: left;*/
+    margin-bottom: 3px;
 }
+
 
 /*//////////////    YelpSearch     ////////////////////////*/
 
 #yelpForm {
-	
-	
-	margin: 0 auto;
-	margin-top: 50px;
+    margin: 0 auto;
+    margin-top: 50px;
     background-color: white;
     width: 80%;
 }
 
 #restaurantsearch {
-	width: 40%;
+    width: 40%;
     border: 0;
     float: left;
 }
@@ -101,8 +104,7 @@ span{
 }
 
 #yelpSubmit {
-
-	float: right;
+    float: right;
 }
 
 
@@ -116,13 +118,12 @@ span{
 }
 
 #yelpResults {
-	margin: 0 auto;
-	width: 80%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 #roundedImage {
-   margin-bottom: 20px;
- 
+    margin-bottom: 20px;
 }
 
 #resetYelp {
@@ -132,7 +133,6 @@ span{
     font-weight: 700;
     border-color: skyblue;
     letter-spacing: 6px;
-
 }
 
 
@@ -142,16 +142,13 @@ span{
     display: inline-flex;
 }
 
-
-
 .googleLogin {
     background-color: dodgerblue;
     width: 100%;
 }
 
-#googleLoginDiv{
+#googleLoginDiv {
     text-align: center;
-
 }
 
 
@@ -178,11 +175,9 @@ span{
 
 /*/////////////////////          DAYS       ///////////////////*/
 
-.meal-img{
-
+.meal-img {
     height: 85%;
     width: 100%;
-
 }
 
 #day-wrapper {
@@ -192,10 +187,65 @@ span{
     width: 250px;
 }
 
-#calendar-wrapper{
+#calendar-wrapper {
     overflow: auto;
 }
 
 .lunch {
     width: 100%;
 }
+
+
+/*------------------------------major elements------------------*/
+
+#first-spoon {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    height: 10vh;
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.main-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.calendar-wrapper {
+    padding: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+}
+
+
+/*--------------------------login page----------------------------------*/
+
+.bk-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url(./images/bk.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .7;
+}
+
+.local-login {
+    width: 30vw;
+    margin: 0 auto;
+}
+
+.main-login {}

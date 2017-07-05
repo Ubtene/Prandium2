@@ -52,9 +52,8 @@ class LocalLogin extends React.Component {
 
   render() {
     return (
-      <div className="panel panel-default" id="form">
-        <div className="panel-body text-center">
-          <form onSubmit={this.handleSubmit}>
+      
+          <form onSubmit={this.handleSubmit} className='local-login'>
             <div className="form-group">
               <h3 id="loginTitle">Login:</h3>
               <label id="top">
@@ -87,8 +86,7 @@ class LocalLogin extends React.Component {
               <br />
             </div>
           </form>
-        </div>
-      </div>
+       
     );
   }
 }
