@@ -24,7 +24,7 @@ class Main extends React.Component {
       ingredients: "",
       show: false,
       userInfo: false,
-      userMeals: [] 
+      userMeals: "" 
     }
 
     this.setUser = this.setUser.bind(this);

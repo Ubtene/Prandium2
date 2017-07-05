@@ -23,7 +23,7 @@ class MainFood extends React.Component {
          
         return (
             <div className='central-page'>
-              { (this.state.hasMeals === "true") ? 
+              { this.props.userMeals ? 
               <MealsCalendar 
               userMeals={this.props.userMeals} 
               getMyMeal={ this.props.getMyMeal }
