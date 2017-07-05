@@ -25,9 +25,9 @@ module.exports = function(app) {
   app.post("/user/days", (req, res) => {
 
     console.log("got here");
-    console.log(req.body);
-    console.log(req.body.days.days[0]);
-    console.log(req.body.days.days[1]);
+    console.log(req.body.googleId);
+    console.log(req.body.days[0]);
+    console.log(req.body.days[1]);
    var userID = req.body.user_id;
   
     console.log(userID);
