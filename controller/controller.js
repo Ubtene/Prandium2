@@ -24,17 +24,25 @@ module.exports = function(app) {
   // route for selecting days
   app.post("/user/days", (req, res) => {
 
-    let userID = req.body.user_id;
+    console.log("got here");
+
+   var userID = req.body.user_id;
+  
+    console.log(userID);
+  
+  console.log("showed you userID");
     let days = req.body.days; //and array of objects
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
-      var mealProperty = results[0].meals;
+   
+      console.log(results);
+      // var mealProperty = results[0].meals;
 
-      for (i = 0; i < days.length; i++) {
-        var number = Math.floor(Math.random() * 100);
+      // for (i = 0; i < days.length; i++) {
+      //   var number = Math.floor(Math.random() * 100);
 
-        days[i].meal = mealProperty[i];
-      }
+      //   days[i].meal = mealProperty[i];
+      // }
 
       res.send(days);
 
@@ -72,7 +80,7 @@ module.exports = function(app) {
   //receiving things from form
 
   app.post("/", function(req, res) {
-    console.log(req.body);
+
     var userID = req.body.restrictions.user;
 
     var userName = req.body.restrictions.login;
