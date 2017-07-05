@@ -1,7 +1,6 @@
-import React from 'react';
-import MealsCalendar from './MealsCalendar';
-import DaySelection from './DaySelection';
-
+const React = require('react');
+import MainFood from './MainFood';
+const Userform = require('./Userform');
 
 
 class CentralPage extends React.Component {
@@ -12,11 +11,17 @@ class CentralPage extends React.Component {
         };
     }
 
+    componentDidMount(){
+        console.log("in central CentralPage");
+        console.log(this.props.userInfo);
+    }
+    // <MealsCalendar getMyMeal={ this.props.getMyMeal } meal={ this.props.meal } show={ this.props.show } hideModal={ this.props.hideModal } /> : <DaySelection user={this.props.user}
+    // meal={this.state.meal} show={this.state.show} hideModal={this.hideModal}
     render() {
-            console.log(this.props.user_id)
+         
         return (
             <div className='central-page'>
-              { this.state.hasMeals ? <MealsCalendar getMyMeal={ this.props.getMyMeal } meal={ this.props.meal } show={ this.props.show } hideModal={ this.props.hideModal } /> : <DaySelection user_id={this.props.user_id}/> }
+              {(this.props.userInfo === "true") ? <MainFood getMyMeal={ this.props.getMyMeal } meal={ this.props.meal } show={ this.props.show } hideModal={ this.props.hideModal } user={this.props.user} /> : <Userform setUserInfo={this.props.setUserInfo} />  }
             </div>
         )
     }
@@ -25,4 +30,3 @@ class CentralPage extends React.Component {
 
 export default CentralPage;
 
-// meal={this.state.meal} show={this.state.show} hideModal={this.hideModal}

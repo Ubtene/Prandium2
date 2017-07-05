@@ -21,7 +21,8 @@ class Main extends React.Component {
       meal: '',
       img: '',
       instructions: "",
-      show: false
+      show: false,
+      userInfo: false
     }
 
     this.setUser = this.setUser.bind(this);
@@ -30,6 +31,7 @@ class Main extends React.Component {
     this.getMyMeal = this.getMyMeal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.setUserInfo = this.setUserInfo.bind(this);
 
   }
 
@@ -55,6 +57,12 @@ class Main extends React.Component {
       user: user
     });
     console.log('googleupdated');
+  }
+
+  setUserInfo(userInfo){
+    this.setState({
+      userInfo: userInfo
+    })
   }
 
   // userLogin(isLoggedIn) {
@@ -91,9 +99,10 @@ class Main extends React.Component {
                                     If there is a user then setup a function to take the current user info from google and render the app else we should propably have another file that has our
                                     running app components in it.  So you will either get the first instance of our main app or the login screen..... we will need to pass the user state
                                     using function to run on submit to pass user info back here so we can pass it around as props for the app.
+                                     <FormOrLogin setUser={this.setUser} setUserInfo={this.setUserInfo} userInfo={this.state.userInfo}
                                   */ }
         <div className="row">
-          { this.state.user ? <CentralPage getMyMeal={ this.getMyMeal } meal={ this.state.meal } user_id={this.state.user} show={ this.state.show } hideModal={ this.hideModal } /> : <FormOrLogin setUser = {this.setUser} /> }
+          { this.state.user ? <CentralPage getMyMeal={ this.getMyMeal } meal={ this.state.meal } user={this.state.user} show={ this.state.show } hideModal={ this.hideModal } userInfo={this.state.userInfo} setUserInfo={ this.setUserInfo} /> : <MainLogin setUser={this.setUser} /> }
         </div>
       </div>
     )

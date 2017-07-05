@@ -33,9 +33,9 @@ class GoogleLogin extends React.Component {
         );
 
 				this.props.setUser(result.data.Googleid);
-        this.setState({
-          isLoggedIn: result.data.Googleid
-        });
+        // this.setState({
+        //   isLoggedIn: result.data.Googleid
+        // });
 
         console.log(
           "how id property looks when compWillMount func is called:",

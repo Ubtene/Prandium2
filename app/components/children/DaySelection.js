@@ -75,7 +75,13 @@ class DaySelection extends React.Component {
     }
   }
 
-    
+  componentDidMount(){
+        console.log("-------------");
+      console.log('user in daysselection');
+     console.log(this.props.user);
+
+    console.log("-------------");
+  } 
   
 
   createCheckbox (label) {
@@ -90,8 +96,9 @@ class DaySelection extends React.Component {
 
   handleSubmitForm (event) {
     event.preventDefault();
-    let user_id = this.props.user_id;
-      console.log("user_id:",user_id);
+    // let user = this.props.user_id;
+
+
     let daysSelected = [];
 
     // make selected days into objects
@@ -99,7 +106,8 @@ class DaySelection extends React.Component {
      console.log('Days Selected:', daysSelected);
      
     //  send days using axios calls
-     helpers.sendDays(user_id, daysSelected);
+     helpers.sendDays(this.props.user, daysSelected);
+     this.props.thisHasMeals("true");
   }
 
   render() {

@@ -17,15 +17,6 @@ class Yelpsearch extends React.Component {
             this.handleChange = this.handleChange.bind(this);
 
         }
-
-        componentDidUpdate() {
-        { /* currently not being used  */ }
-      }
-
-
-
-
-
        
         handleSubmit(event) {
             event.preventDefault();
