@@ -85,10 +85,10 @@ class UserSurvey extends React.Component {
     {/* Here we're calling the postform function from the helpers file and sending the data from the form to the back end and setting up a promise  */}
       helpers.postForm(this.state.login, this.state.email, this.state.password, this.state.preferences, this.state.restrictions).then(function(result){
         // console.log(this.state.peanut)
-        console.log(result);
+        console.log(result.data.meals);
         var UB = "true"
         this.props.setUserInfo(UB);
-
+        this.props.setUserMeals(result.data.meals);
 
       }.bind(this));
     {/* setting initial state for component so we can pass this to the server once the form is filled  */}

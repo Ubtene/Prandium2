@@ -170,11 +170,12 @@ module.exports = function(app) {
   //end of yelp beginning of code to receive day objects in an array
 
   app.post("/user/:id/", function(req, res) {
-    var userID = "114370910443928643459";
+    var userID = "fodnb";
 
     var days = req.body;
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
+      console.log(results);
       var mealProperty = results[0].meals;
 
       for (i = 0; i < days.length; i++) {

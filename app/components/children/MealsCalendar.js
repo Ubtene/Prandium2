@@ -108,9 +108,7 @@ class MealsCalendar extends React.Component {
       Wednesday: '',
       Thursday: '',
       Friday: '',
-      Saturday: '',
-      myMeal: {},
-      count: 0
+      Saturday: ''
     };
 
     this.createDay = this.createDay.bind(this);
