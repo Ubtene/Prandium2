@@ -22,9 +22,10 @@ module.exports = function(app) {
   //route to fill days with meals
 
   // route for selecting days
-  app.post("/api/:id/days", (req, res) => {
-    let user_ID = req.params.id;
-    let days = res.body; //and array of objects
+  app.post("/user/days", (req, res) => {
+
+    let userID = req.body.user_id;
+    let days = req.body.days; //and array of objects
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
       var mealProperty = results[0].meals;
@@ -71,7 +72,10 @@ module.exports = function(app) {
   //receiving things from form
 
   app.post("/", function(req, res) {
-    var userID = req.body.restrictions.login;
+    console.log(req.body);
+    var userID = req.body.restrictions.user;
+
+    var userName = req.body.restrictions.login;
 
     var userEmail = req.body.restrictions.email;
 
@@ -83,13 +87,13 @@ module.exports = function(app) {
 
     var modifiedRestrictions = restriction.join("+");
 
-    console.log(modifiedRestrictions);
+    // console.log(modifiedRestrictions);
 
     // end of gathering info, commencing api query
 
     // These code snippets use an open-source library. http://unirest.io/nodejs
     var string1 =
-      "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=2&tags=";
+      "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=50&tags=";
     var string2 = preferences.toLowerCase();
     console.log(string2);
     var string3 = string1.concat(string2 + "+");
@@ -111,6 +115,7 @@ module.exports = function(app) {
 
         userMeals.create(
           {
+            userName: userName,
             userID: userID,
             userEmail: userEmail,
             password: password,
@@ -175,7 +180,7 @@ module.exports = function(app) {
     var days = req.body;
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
-      console.log(results);
+      // console.log(results);
       var mealProperty = results[0].meals;
 
       for (i = 0; i < days.length; i++) {

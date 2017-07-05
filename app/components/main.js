@@ -127,6 +127,7 @@ class Main extends React.Component {
             setUserInfo={ this.setUserInfo} 
             setUserMeals={this.setUserMeals} 
             userMeals={this.state.userMeals}
+            
              /> : 
              <MainLogin 
              setUser={this.setUser} /> }

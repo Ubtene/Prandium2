@@ -5,7 +5,7 @@ var helper = {
 
 	
 	//this form is sending user credentials to sign up
-	postForm(login, email, password, preference, restriction) {
+	postForm(login, email, password, preference, restriction, user) {
 		console.log("data to send to backend from the sign-up form", arguments);
 		return axios.post("/", {
 			restrictions: {
@@ -13,7 +13,8 @@ var helper = {
 				email: email,
 				password: password,
 				preference: preference,
-				restriction: restriction
+				restriction: restriction,
+				user: user
 			}
 		}
 		// ).then((data) => console.log('WHAT YOU GET AFTER SENDING YOUR LOGIN INFO:',data)

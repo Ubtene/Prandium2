@@ -133,13 +133,10 @@ passport.use(new GoogleStrategy({
     }
                 res.send(AnObj);
         }       
-
+          //already have a user
      else {
 
-            console.log("found a user");
-                res.send({
-                    test: "yahoo"
-                });  
+                res.send(results); 
 
      }                    
 

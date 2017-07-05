@@ -31,8 +31,15 @@ class GoogleLogin extends React.Component {
           "Results from helpers.getGoogle Promise in the ComponentWillMount func:",
           result
         );
+        console.log('helpers google');
+        console.log(result.data.Googleid);
 
-				this.props.setUser(result.data.Googleid);
+        if(result.data.Googleid){
+        this.props.setUser(result.data.Googleid);
+        } else {
+        this.props.setUser(result);
+        }
+
         // this.setState({
         //   isLoggedIn: result.data.Googleid
         // });

@@ -36,7 +36,8 @@ class CentralPage extends React.Component {
               /> : 
               <Userform 
               setUserInfo={this.props.setUserInfo} 
-              setUserMeals={this.props.setUserMeals} 
+              setUserMeals={this.props.setUserMeals}
+              user={this.props.user} 
               />  }
             </div>
         )
