@@ -5,6 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var unirest = require("unirest");
 const yelp = require("yelp-fusion");
+const _ = require('lodash');
 const clientId = "pbRwg0shy1Zy_gUqWLpiYQ";
 const clientSecret =
   "499HGjfOQVwIUWD9ys11menFEA8Ytu77zNrjRCVJ0qYHUQTdpfqdDKNaR7QDYNPy";
@@ -25,39 +26,34 @@ module.exports = function(app) {
   app.post("/user/days", (req, res) => {
 
     console.log("got here");
-    console.log(req.body.googleId);
-    console.log(req.body.days[0]);
-    console.log(req.body.days[1]);
-   var userID = req.body.user_id;
+
+   var userID = req.body.googleId;
   
     console.log(userID);
   
-  console.log("showed you userID");
-    let days = req.body.days; //and array of objects
-
+    var days = req.body.days; //and array of objects
+  
     userMeals.find({ userID: userID }).exec(function(err, results) {
    
-      // console.log(results);
-      // var mealProperty = results[0].meals;
+      var mealProperty = results[0].meals;
 
-      // for (i = 0; i < days.length; i++) {
-      //   var number = Math.floor(Math.random() * 100);
+      for (i = 0; i < days.length; i++) {
+        var number = Math.floor(Math.random() * 50);
 
-      //   days[i].meal = mealProperty[i];
-      // }
+        days[i].meal = mealProperty[i];
+      }
 
-      res.send(days);
-
+// Initiate shuffle
       var shuffledMeals = _.shuffle(mealProperty);
 
-      userMeals
-        .update({ userID: userID }, { $set: { meals: shuffledMeals } })
+      userMeals.update({ userID: userID }, { $set: { meals: shuffledMeals } })
         .then(function(doc) {
-          userMeals.findOne({ userID: userID }, "meals", function(err, meals) {
-            console.log(err);
-          });
+   console.log("about to send days");
+   res.send(days);
+
         });
     });
+ 
   });
 
   // routes for removing meals
