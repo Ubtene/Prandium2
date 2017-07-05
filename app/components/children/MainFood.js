@@ -25,6 +25,8 @@ class MainFood extends React.Component {
             <div className='central-page'>
               { this.props.userMeals ? 
               <MealsCalendar 
+
+              user={this.props.user}
               userMeals={this.props.userMeals} 
               getMyMeal={ this.props.getMyMeal }
               day={this.props.day} 
@@ -33,12 +35,14 @@ class MainFood extends React.Component {
               instructions={this.props.instructions}
               ingredients={this.props.ingredients}
               show={ this.props.show } 
-              hideModal={ this.props.hideModal } 
+              hideModal={ this.props.hideModal }
+
               /> : 
               <DaySelection 
               user={this.props.user} 
               thisHasMeals={this.thisHasMeals} 
               setUserMeals={this.props.setUserMeals}
+              setUser={this.props.setUser}
               /> }
             </div>
         )

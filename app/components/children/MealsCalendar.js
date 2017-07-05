@@ -140,6 +140,10 @@ class MealsCalendar extends React.Component {
     })
   }
 
+  componentDidUpdate(){
+    console.log(this.props.user);
+  }
+
   render() {
     return (
       <div className="calendar-wrapper">
