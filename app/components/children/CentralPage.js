@@ -21,7 +21,7 @@ class CentralPage extends React.Component {
          
         return (
             <div className='central-page'>
-              {(this.props.userInfo === "true") ? 
+              {(this.props.user.length != 21) ? 
               <MainFood 
               userMeals={this.props.userMeals} 
               getMyMeal={ this.props.getMyMeal } 
@@ -35,6 +35,7 @@ class CentralPage extends React.Component {
               user={this.props.user} 
               /> : 
               <Userform 
+              setUser={this.props.setUser}
               setUserInfo={this.props.setUserInfo} 
               setUserMeals={this.props.setUserMeals}
               user={this.props.user} 

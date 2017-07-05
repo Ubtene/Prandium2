@@ -124,7 +124,7 @@ class MealsCalendar extends React.Component {
         <div 
           key={ i } 
           className="col-sm-3" 
-          onClick={ () => this.props.getMyMeal(day.dayName, day.meals.lunch, day.ingredients.ingredientsImg,day.instructions, day.ingredients.ingredients) }>
+          onClick={ () => this.props.getMyMeal(day.dayName, day.meals.lunch, day.ingredients.ingredientsImg,day.instructions,  day.ingredients.ingredients) }>
         <Day 
           key={ i } 
           day={ day.dayName } 

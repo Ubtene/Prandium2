@@ -89,6 +89,7 @@ class UserSurvey extends React.Component {
         var UB = "true"
         this.props.setUserInfo(UB);
         this.props.setUserMeals(result.data.meals);
+        this.props.setUser(result);
 
       }.bind(this));
     {/* setting initial state for component so we can pass this to the server once the form is filled  */}
