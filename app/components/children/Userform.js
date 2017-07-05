@@ -88,7 +88,7 @@ class UserSurvey extends React.Component {
         console.log(result.data.meals);
         var UB = "true"
         this.props.setUserInfo(UB);
-        this.props.setUserMeals(result.data.meals);
+        // this.props.setUserMeals(result.data.meals);
         this.props.setUser(result);
 
       }.bind(this));

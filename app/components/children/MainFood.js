@@ -37,7 +37,9 @@ class MainFood extends React.Component {
               /> : 
               <DaySelection 
               user={this.props.user} 
-              thisHasMeals={this.thisHasMeals} /> }
+              thisHasMeals={this.thisHasMeals} 
+              setUserMeals={this.props.setUserMeals}
+              /> }
             </div>
         )
     }

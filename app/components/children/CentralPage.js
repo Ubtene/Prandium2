@@ -33,11 +33,11 @@ class CentralPage extends React.Component {
               show={ this.props.show } 
               hideModal={ this.props.hideModal } 
               user={this.props.user} 
+              setUserMeals={this.props.setUserMeals}
               /> : 
               <Userform 
               setUser={this.props.setUser}
               setUserInfo={this.props.setUserInfo} 
-              setUserMeals={this.props.setUserMeals}
               user={this.props.user} 
               />  }
             </div>

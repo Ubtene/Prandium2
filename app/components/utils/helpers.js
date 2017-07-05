@@ -28,7 +28,7 @@ var helper = {
 	//it receives an array of objects
 
 	sendDays(user_id, days) {
-		axios.post(`/user/days`, {days: days, googleId:user_id})
+		return axios.post(`/user/days`, {days: days, googleId:user_id})
       .then((data) => {
 		  
           console.log('sending back days:',data);
