@@ -23,11 +23,11 @@ class MainFood extends React.Component {
          
         return (
             <div className='central-page'>
-              { this.props.user.data[0].mealsForTheWeek[0].day ? 
+              { this.props.user.data[0] ? 
               <MealsCalendar 
 
               user={this.props.user}
-              userMeals={this.props.userMeals} 
+              userMeals={this.props.userMeals}  
               getMyMeal={ this.props.getMyMeal }
               day={this.props.day} 
               meal={ this.props.meal } 

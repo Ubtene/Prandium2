@@ -22,8 +22,50 @@ var userMeals = require("../models/User.js");
 module.exports = function(app) {
   //route to fill days with meals
 
-  // route for selecting days
-  app.post("/user/days", (req, res) => {
+//   // route for selecting days
+//    app.post("/user/days", (req, res) => {
+
+//     console.log("got here");
+
+//    var userID = req.body.googleId;
+  
+//     console.log(userID);
+  
+//     var days = req.body.days; //and array of objects
+  
+//     userMeals.find({ userID: userID }).exec(function(err, results) {
+   
+//       var mealProperty = results[0].meals;
+
+//       for (i = 0; i < days.length; i++) {
+//         var number = Math.floor(Math.random() * 50);
+
+//         days[i].meal = mealProperty[i];
+//       }
+      
+//          userMeals.update({ userID: userID }, { $set: { mealsForTheWeek: days } })
+//         .then(function(doc) {
+//    console.log(doc);
+//         });
+
+// // Initiate shuffle
+//       var shuffledMeals = _.shuffle(mealProperty);
+
+//       userMeals.update({ userID: userID }, { $set: { meals: shuffledMeals } })
+//         .then(function(doc) {
+//    console.log("about to send days");
+//     userMeals.find({ userID: userID }).exec(function(err, results) {
+//       res.send(results)
+//     });
+//    // res.send(days);
+
+//         });
+//     });
+ 
+//   });
+
+
+ app.post("/user/days", (req, res) => {
 
     console.log("got here");
 
@@ -74,34 +116,30 @@ module.exports = function(app) {
 
       userMeals.update({ userID: userID }, { $set: { meals: shuffledMeals } })
         .then(function(doc) {
+
    console.log("about to send days");
-   res.send(days);
+     userMeals.find({ userID: userID }).exec(function(err, results) {
+      res.send(results);
+    });
 
         });
     });
  
   });
 
-  // routes for removing meals and updating database
-  app.delete("/api/deletemeals", (req, res) => {
-   
-    let userId = req.body.id;
-
-     var newInfo = req.body.newSchedule;
-     
-     userMeals.update({userID: userID} , {$set:{ "mealsForTheWeek": []}}).then(function (doc){
-
-         console.log(doc);
-
-        userMeals.update({'userID':userID} , {$set:{"mealsForTheWeek": newInfo}}).then(function (doc){
-
-            console.log(doc);
-            res.send( "Here is the updated schedule for persistence" + newInfo);
-        });
-
-     });
 
 
+
+
+
+  // routes for removing meals
+  app.delete("/api/:id/meals", (req, res) => {
+    let user_id = req.params.id;
+    // this is a string of the day for which to remove the meal for
+    let day = req.body;
+
+    res.send(`${user_id} has just removed meal(s) from his meal plan!`);
+    console.log(`${user_id} has just removed meal(s) from his meal plan!`);
   });
 
   // routes for updating user information
@@ -216,40 +254,5 @@ module.exports = function(app) {
       });
   });
 
-  //end of yelp beginning of code to receive day objects in an array
 
-  app.post("/user/:id/", function(req, res) {
-    var userID = "fodnb";
-
-    var days = req.body;
-
-    userMeals.find({ userID: userID }).exec(function(err, results) {
-      // console.log(results);
-      var mealProperty = results[0].meals;
-
-      for (i = 0; i < days.length; i++) {
-        var number = Math.floor(Math.random() * 100);
-
-        days[i].meal = mealProperty[i];
-      }
-
-      //end of for loop
-
-      //update mongo for persistence
-
-      userMeals.update({
-        userID: userID
-      }), { $set: { mealsForTheWeek: [] } }, function(err, result) {
-        console.log(err);
-      };
-
-      userMeals.update({
-        userID: userID
-      }), { $set: { mealsForTheWeek: days } }, function(err, result) {
-        console.log(err);
-      };
-
-      res.send(days);
-    });
-  });
 };

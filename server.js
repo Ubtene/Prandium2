@@ -101,7 +101,7 @@ passport.deserializeUser(function(user, done) {
 
 passport.use(new GoogleStrategy({
     clientID: "848838294022-7h0tlqrqq67isbjjav949n6uaor9cocl.apps.googleusercontent.com",
-    clientSecret: "Fn43-sWs-iBcdPHPjnBC3zFe",
+    clientSecret: "V05_x1KklC8XIGls6YCAD-iH",
     callbackURL: "http://localhost:3000/auth/google/callback"
 }, function (accessToken, refreshToken, profile, cb) {
 
@@ -209,11 +209,6 @@ app.post("/localuser", function(req, res){
 
 
 require("./controller/controller.js") (app);
-
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
 
 
 // Listener

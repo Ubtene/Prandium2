@@ -33,7 +33,7 @@ class MyModal extends React.Component{
             <Modal.Title id="contained-modal-title-lg">{this.props.day}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={this.props.img} />
+            <img id="modalImg" src={this.props.img} />
             <h4>{this.props.meal}</h4>
             <h4>{this.props.ingredients}</h4>
             <p>{this.props.instructions}</p>
