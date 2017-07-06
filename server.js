@@ -210,6 +210,11 @@ app.post("/localuser", function(req, res){
 
 require("./controller/controller.js") (app);
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 
 // Listener
 app.listen(PORT, function() {

@@ -82,14 +82,26 @@ module.exports = function(app) {
  
   });
 
-  // routes for removing meals
-  app.delete("/api/:id/meals", (req, res) => {
-    let user_id = req.params.id;
-    // this is a string of the day for which to remove the meal for
-    let day = req.body;
+  // routes for removing meals and updating database
+  app.delete("/api/deletemeals", (req, res) => {
+   
+    let userId = req.body.id;
 
-    res.send(`${user_id} has just removed meal(s) from his meal plan!`);
-    console.log(`${user_id} has just removed meal(s) from his meal plan!`);
+     var newInfo = req.body.newSchedule;
+     
+     userMeals.update({userID: userID} , {$set:{ "mealsForTheWeek": []}}).then(function (doc){
+
+         console.log(doc);
+
+        userMeals.update({'userID':userID} , {$set:{"mealsForTheWeek": newInfo}}).then(function (doc){
+
+            console.log(doc);
+            res.send( "Here is the updated schedule for persistence" + newInfo);
+        });
+
+     });
+
+
   });
 
   // routes for updating user information
