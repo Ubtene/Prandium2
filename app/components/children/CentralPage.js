@@ -23,6 +23,7 @@ class CentralPage extends React.Component {
             <div className='central-page'>
               {(this.props.user.length != 21) ? 
               <MainFood 
+              setUser={this.props.setUser}
               userMeals={this.props.userMeals} 
               getMyMeal={ this.props.getMyMeal } 
               day={this.props.day}

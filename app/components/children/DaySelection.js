@@ -109,8 +109,8 @@ class DaySelection extends React.Component {
      helpers.sendDays(this.props.user.data.userID, daysSelected).then(function(data){
 
       console.log(data);
-    this.props.setUserMeals(data);
- 
+    // this.props.setUserMeals(data);
+    this.props.setUser(data);
 
      }.bind(this));
      this.props.thisHasMeals("true");
