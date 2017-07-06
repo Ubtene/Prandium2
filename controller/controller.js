@@ -38,11 +38,32 @@ module.exports = function(app) {
       var mealProperty = results[0].meals;
 
       for (i = 0; i < days.length; i++) {
-        var number = Math.floor(Math.random() * 50);
 
         days[i].meal = mealProperty[i];
+        days[i].mealInstructions = [];
+        days[i].ingredientImages = []
       }
+
+      console.log(days[0].mealInstructions);
+      console.log(days[0].ingredientImages);
       
+
+       for (j= 0; j < days.length; j ++) {
+
+         console.log("working in first loop");
+
+        for (t=0 ; t< days[j].meal.extendedIngredients.length ; t++) {
+
+          console.log("working in second loop");
+
+        days[j].mealInstructions.push(days[j].meal.extendedIngredients[t].originalString);
+        days[j].ingredientImages.push(days[j].meal.extendedIngredients[t].image);
+      
+      }
+
+       }
+   
+
          userMeals.update({ userID: userID }, { $set: { mealsForTheWeek: days } })
         .then(function(doc) {
    console.log(doc);
