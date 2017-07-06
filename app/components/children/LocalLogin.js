@@ -40,7 +40,7 @@ class LocalLogin extends React.Component {
         console.log(result.data);
         console.log("---------------");
         var login = result.data;
-		this.props.setUser(results.data.Googleid);
+        this.props.setUser(results.data.Googleid);
         this.setState({
           loggedIn: login
         });
@@ -52,41 +52,33 @@ class LocalLogin extends React.Component {
 
   render() {
     return (
-      
-          <form onSubmit={this.handleSubmit} className='local-login'>
-            <div className="form-group">
-              <h3 id="loginTitle">Login:</h3>
-              <label id="top">
-                UserName:
-                <input
-                  value={this.state.login}
-                  type="text"
-                  className="form-control"
-                  id="login"
-                  name="login"
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
-              <br />
-              <label id="top">
-                Password:
-                <input
-                  value={this.state.password}
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
-              <br />
-              <input value="Submit" className="btn" type="submit" />
-              <br />
-            </div>
-          </form>
-       
+      <form onSubmit={this.handleSubmit} className="local-login">
+        <div id="loginTitle">Log In:</div>
+        <input
+          value={this.state.login}
+          placeholder="username"
+          type="text"
+          className="form-control"
+          id="login"
+          name="login"
+          onChange={this.handleChange}
+          required
+        />
+        <br />
+        <input
+          value={this.state.password}
+          placeholder="password"
+          type="password"
+          className="form-control"
+          id="password"
+          name="password"
+          onChange={this.handleChange}
+          required
+        />
+        <br />
+        <input value="Sign In" className="sign-in-btn" type="submit" />
+        <br />
+      </form>
     );
   }
 }

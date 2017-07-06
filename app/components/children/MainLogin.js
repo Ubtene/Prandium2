@@ -10,19 +10,12 @@ class MainLogin extends React.Component {
 
   render() {
     // userLogin={this.props.userLogin}
-
     return (
-      <div className="container main-login">
-        <div className="container row" />
-
-        <div className="container row">
-          <LocalLogin setUser={this.props.setUser} />
-        </div>
-
-        <div className="container row">
-          <GoogleLogin setUser={this.props.setUser} />
-        </div>
-		<div className='bk-img'></div>
+      <div className="main-login">
+        <LocalLogin setUser={this.props.setUser} />
+			--or--
+        <GoogleLogin setUser={this.props.setUser} />
+        <div className="bk-img" />
       </div>
     );
   }

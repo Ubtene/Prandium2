@@ -1,29 +1,23 @@
-import React from 'react';
+import React from "react";
 
-export const Day = (props) => {
-    return (
+export const Day = props => {
+  return (
     <div className="panel" id="day-wrapper">
-
       <div className="day-name">
         {props.day}
       </div>
 
-
       <div className="meals">
-
         <div className="lunch">
           {props.lunch}
-        {/*  <button className="">Delete Meal</button>*/}
+          {/*  <button className="">Delete Meal</button>*/}
         </div>
-
       </div>
 
-
-
       <img className="meal-img" alt="Image of meal" src={props.image} />
-     {/* <button>Update Meals</button>*/}
+      {/* <button>Update Meals</button>*/}
     </div>
   );
-}
+};
 
-export default Day
+export default Day;

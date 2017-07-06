@@ -31,13 +31,13 @@ class GoogleLogin extends React.Component {
           "Results from helpers.getGoogle Promise in the ComponentWillMount func:",
           result.data
         );
-        console.log('helpers google');
+        console.log("helpers google");
         console.log(result.data.Googleid);
 
-        if(result.data.Googleid){
-        this.props.setUser(result.data.Googleid);
+        if (result.data.Googleid) {
+          this.props.setUser(result.data.Googleid);
         } else {
-        this.props.setUser(result);
+          this.props.setUser(result);
         }
 
         // this.setState({
@@ -59,22 +59,13 @@ class GoogleLogin extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="container row" id="googleLoginDiv">
-          <div className="col-sm-3" />
-
-          <div className="col-sm-6">
-            <a
-              className="googleLogin btn"
-              onClick={this.handleClick}
-              href="http://localhost:3000/auth/google"
-            >
-              Sign in with Google
-            </a>
-          </div>
-          <div className="col-sm-3" />
-        </div>
-      </div>
+      <a
+        className="googleLogin"
+        onClick={this.handleClick}
+        href="http://localhost:3000/auth/google"
+      >
+       <div className='google-logo'></div> Sign in with Google
+      </a>
     );
   }
 }
