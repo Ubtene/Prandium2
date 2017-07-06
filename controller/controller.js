@@ -75,10 +75,7 @@ module.exports = function(app) {
       userMeals.update({ userID: userID }, { $set: { meals: shuffledMeals } })
         .then(function(doc) {
    console.log("about to send days");
-    userMeals.find({ userID: userID }).exec(function(err, results) {
-      res.send(results)
-    });
-   // res.send(days);
+   res.send(days);
 
         });
     });
