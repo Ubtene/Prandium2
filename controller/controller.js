@@ -5,7 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var unirest = require("unirest");
 const yelp = require("yelp-fusion");
-const _ = require('lodash');
+const _ = require("lodash");
 const clientId = "pbRwg0shy1Zy_gUqWLpiYQ";
 const clientSecret =
   "499HGjfOQVwIUWD9ys11menFEA8Ytu77zNrjRCVJ0qYHUQTdpfqdDKNaR7QDYNPy";
@@ -20,108 +20,89 @@ var CurrentUser = {};
 var userMeals = require("../models/User.js");
 
 module.exports = function(app) {
-
- app.post("/user/days", (req, res) => {
-
+  app.post("/user/days", (req, res) => {
     console.log("got here");
 
-   var userID = req.body.googleId;
-  
+    var userID = req.body.googleId;
+
     console.log(userID);
-  
+
     var days = req.body.days; //and array of objects
-  
+
     userMeals.find({ userID: userID }).exec(function(err, results) {
-   
       var mealProperty = results[0].meals;
 
       for (i = 0; i < days.length; i++) {
-
         days[i].meal = mealProperty[i];
         days[i].mealInstructions = [];
-        days[i].ingredientImages = []
+        days[i].ingredientImages = [];
       }
 
       console.log(days[0].mealInstructions);
       console.log(days[0].ingredientImages);
-      
 
-       for (j= 0; j < days.length; j ++) {
+      for (j = 0; j < days.length; j++) {
+        console.log("working in first loop");
 
-         console.log("working in first loop");
-
-        for (t=0 ; t< days[j].meal.extendedIngredients.length ; t++) {
-
+        for (t = 0; t < days[j].meal.extendedIngredients.length; t++) {
           console.log("working in second loop");
 
-        days[j].mealInstructions.push(days[j].meal.extendedIngredients[t].originalString);
-        days[j].ingredientImages.push(days[j].meal.extendedIngredients[t].image);
-      
+          days[j].mealInstructions.push(
+            days[j].meal.extendedIngredients[t].originalString
+          );
+          days[j].ingredientImages.push(
+            days[j].meal.extendedIngredients[t].image
+          );
+        }
       }
 
-       }
-   
-
-         userMeals.update({ userID: userID }, { $set: { mealsForTheWeek: days } })
+      userMeals
+        .update({ userID: userID }, { $set: { mealsForTheWeek: days } })
         .then(function(doc) {
-   console.log(doc);
+          console.log(doc);
         });
 
-// Initiate shuffle
+      // Initiate shuffle
       var shuffledMeals = _.shuffle(mealProperty);
 
-      userMeals.update({ userID: userID }, { $set: { meals: shuffledMeals } })
+      userMeals
+        .update({ userID: userID }, { $set: { meals: shuffledMeals } })
         .then(function(doc) {
+          console.log("about to send days");
 
-   console.log("about to send days");
-
-   //send the entire object
-     userMeals.find({ userID: userID }).exec(function(err, results) {
-      res.send(results);
-    });
-
+          //send the entire object
+          userMeals.find({ userID: userID }).exec(function(err, results) {
+            res.send(results);
+          });
         });
     });
- 
   });
 
-
-
-
-
-
   // routes for removing meals
-    
-app.post("/delete/" , function (req,res) {
 
-var userID = req.body.id;
+  app.post("/delete/", function(req, res) {
+    console.log("got to the delete command");
+    var userID = req.body.user;
 
-var dayChange = req.body.day
+    var dayChange = req.body.day;
 
- userMeals.find({ userID: userID }).exec(function(err, results) {
-
- var mealProperty = results[0].meals;
-
- var randomNumber =  Math.floor(Math.random() * 50).then(function(doc){
-
-
-userMeals.findOne( {dayChange} , {$set: {meal:mealProperty[randomNumber] }} ,
- {new: true}).then(function (doc){
-
-  userMeals.find({ userID: userID }).exec(function(err, results) {
-      res.send(results);
+    userMeals.find({ userID: userID }).exec(function(err, results) {
+      console.log("switching meals");
+      var mealProperty = results[0].meals;
+      var randomNumber = Math.floor(Math.random() * 50);
+      userMeals
+        .findOne(
+          { dayChange },
+          { $set: { meal: mealProperty[randomNumber] } },
+          { new: true }
+        )
+        .then(function(doc) {
+          userMeals.find({ userID: userID }).exec(function(err, results) {
+            res.send(results);
+          });
+        });
     });
-
- });
-
-});
-
-
- })
-
- 
-
-});
+  });
 
   // routes for updating user information
   app.put("/api/:id/user_info", (req, res) => {
@@ -135,7 +116,6 @@ userMeals.findOne( {dayChange} , {$set: {meal:mealProperty[randomNumber] }} ,
   //receiving things from form
 
   app.post("/", function(req, res) {
-
     var userID = req.body.restrictions.user;
 
     var userName = req.body.restrictions.login;
@@ -234,6 +214,4 @@ userMeals.findOne( {dayChange} , {$set: {meal:mealProperty[randomNumber] }} ,
         console.log(e);
       });
   });
-
-
 };
