@@ -383,12 +383,36 @@ footer {
     background: #e67e22;
 }
 
+
+/*------------------------------------Meal Plan Calendar -----------------------------------*/
+
 .calendar-wrapper {
     width: 64vw;
     background: #ffffff;
     display: flex;
+    flex-flow: column;
     justify-content: space-around;
     border: 1px solid #ccc;
     border-radius: 1rem;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);
+}
+
+.day-wrapper {
+    border: 1px solid lightgray;
+    padding: 3%;
+    /*overflow: hidden;*/
+    display: flex;
+    /*flex-flow: column;*/
+    cursor: pointer;
+}
+
+.meal-img {
+    /*height: 20vh;*/
+    width: auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    /*margin: 5%;*/
+    flex-basis: 50%;
+    height: auto;
+    width: 30vh;
 }
