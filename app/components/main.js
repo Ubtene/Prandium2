@@ -65,13 +65,13 @@ class Main extends React.Component {
   setUserInfo(userInfo){
     this.setState({
       userInfo: userInfo
-    })
+    });
   }
 
   setUserMeals(meals){
     this.setState({
       userMeals: meals
-    })
+    });
   }
 
   // userLogin(isLoggedIn) {
