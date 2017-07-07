@@ -9,13 +9,8 @@ export const Day = props => {
 
       <div className="meals">
         <div className="lunch">
-<<<<<<< HEAD
           {props.meal}
         {/*  <button className="">Delete Meal</button>*/}
-=======
-          {props.lunch}
-          {/*  <button className="">Delete Meal</button>*/}
->>>>>>> styles
         </div>
       </div>
 
