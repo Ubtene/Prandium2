@@ -2,15 +2,14 @@ import React from "react";
 import { deleteMeals } from "../utils/helpers";
 
 export const Day = props => {
-
   const handleClick = () => {
     let day = props.day;
     let user = props.user.data["0"].userID;
-    console.log('DAY:', day);
-    console.log('USER:', user);
+    console.log("DAY:", day);
+    console.log("USER:", user);
     deleteMeals(user, day);
   };
-  
+
   return (
     <div className="panel" id="day-wrapper">
       <div className="day-name">
@@ -25,8 +24,7 @@ export const Day = props => {
       </div>
 
       <img className="meal-img" alt="Image of meal" src={props.image} />
-      <button
-        onClick={handleClick}>Update Meals</button>
+      <button onClick={handleClick}>Update Meals</button>
       <button>Delete Meals</button>
     </div>
   );
