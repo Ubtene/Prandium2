@@ -36,7 +36,6 @@ class Checkbox extends React.Component {
       <div>
         <label>
           <input
-            className='day-choice'
             type="checkbox"
             checked={this.state.isChecked}
             onChange={this.handleChange}
@@ -100,17 +99,20 @@ class DaySelection extends React.Component {
     this.selectedCheckboxes.forEach(day => daysSelected.push({ day: day }));
     console.log("Days Selected:", daysSelected);
 
-      console.log(data);
-    // this.props.setUserMeals(data);
-    this.props.setUser(data);
-
-     }.bind(this));
-     this.props.thisHasMeals("true");
+    //  send days using axios calls
+    helpers.sendDays(this.props.user.data.userID, daysSelected).then(
+      function(data) {
+        console.log(data);
+        // this.props.setUserMeals(data);
+        this.props.setUser(data);
+      }.bind(this)
+    );
+    this.props.thisHasMeals("true");
   }
 
   render() {
     return (
-      <div className='day-selection'>
+      <div className="day-selection">
         <h1 className="primary-text">On What Days Do You Want Meals?</h1>
         <h3>Check the boxes below</h3>
         <form onSubmit={this.handleSubmitForm}>
