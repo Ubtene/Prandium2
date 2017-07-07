@@ -11,11 +11,10 @@ export const Day = props => {
   };
 
   return (
-    <div className="panel" id="day-wrapper">
+    <div className="day-wrapper">
       <div className="day-name">
         {props.day}
       </div>
-
       <div className="meals">
         <div className="lunch">
           {props.meal}
