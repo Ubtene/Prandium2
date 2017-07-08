@@ -22,18 +22,28 @@ class MealsCalendar extends React.Component {
 
   }
 
+
   createDay() {
 
     var week = this.props.user.data[0].mealsForTheWeek;
+
     console.log(week);
     return week.map((day, i) => {
 
+    var ingredients = this.props.user.data[0].mealsForTheWeek[i].mealInstructions;
+    console.log(ingredients);
+    var ingredientsImg = this.props.user.data[0].mealsForTheWeek[i].ingredientImages;
+    console.log(ingredientsImg);
+    // conosole.log(my)
+   
+    console.log("------------------");
       return (
         <div 
           key={ i } 
           className="col-sm-3" 
-          onClick={ () => this.props.getMyMeal(day.day, day.meal.title, day.meal.image, day. meal.instructions, "instructions") }>
+          onClick={ () => this.props.getMyMeal(day.day, day.meal.title, day.meal.image, day. meal.instructions, ingredients, ingredientsImg) }>
         <Day 
+          user={this.props.user}
           key={ i } 
           day={ day.day } 
           meal={ day.meal.title } 
@@ -58,6 +68,7 @@ class MealsCalendar extends React.Component {
           img={this.props.img}
           instructions={this.props.instructions}
           ingredients={this.props.ingredients}
+          ingredientsimg={this.props.ingredientsimg}  
           show={ this.props.show } 
           hideModal={ this.props.hideModal } />
         </div>

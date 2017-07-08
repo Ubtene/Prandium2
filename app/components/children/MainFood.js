@@ -34,6 +34,7 @@ class MainFood extends React.Component {
               img={this.props.img}
               instructions={this.props.instructions}
               ingredients={this.props.ingredients}
+              ingredientsimg={this.props.ingredientsimg}
               show={ this.props.show } 
               hideModal={ this.props.hideModal }
 

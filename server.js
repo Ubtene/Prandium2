@@ -34,6 +34,8 @@ app.get("/", function (res, res ) {
 
 });
 
+
+
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
@@ -171,6 +173,22 @@ app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
 });
+
+app.get('/loggingout', function(req, res){
+  
+  var obj = {
+    date: '',
+    meals: '',
+    mealsForTheWeek: '',
+    preferences: '',
+    restrictions: '',
+    userEmail: '',
+    userID: '',
+}
+
+  res.send(obj);
+})
+
 
 function isAuthenticated(req, res, next) {
     if (req.user) return next();

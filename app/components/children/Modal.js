@@ -3,7 +3,7 @@
 
 const React = require('react');
 import { Button, Modal, ButtonToolbar  } from 'react-bootstrap';
-
+const _ = require('lodash');
 
 class MyModal extends React.Component{
   constructor(props){
@@ -11,16 +11,11 @@ class MyModal extends React.Component{
     this.state = {
       show: false
     }
-
-
   }
-        // <Button bsStyle="primary" onClick={this.showModal}>
-        //   Launch demo modal
-        // </Button>
-                   // <Button onClick={this.props.hideModal}>Close</Button>
-
 
   render() {
+
+
     return (
       <ButtonToolbar>
 
@@ -28,19 +23,48 @@ class MyModal extends React.Component{
           show={this.props.show}
           onHide={this.props.hideModal}
           dialogClassName="custom-modal"
+          id="modal"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">{this.props.day}</Modal.Title>
+            <Modal.Title id="contained-modal-title-lg">{this.props.day}: <br/> {this.props.meal}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body id='modalBody'>
             <img id="modalImg" src={this.props.img} />
-            <h4>{this.props.meal}</h4>
-            <h4>{this.props.ingredients}</h4>
+            <h3>Instructions:</h3>
             <p>{this.props.instructions}</p>
+            <br/>
+            <h3>Ingredients:</h3>
+        
+       <p>{this.props.ingredients[0]}</p>
+
+                 <p>{this.props.ingredients[1]}</p>
+
+              <p>{this.props.ingredients[2]}</p>
+
+                <p>{this.props.ingredients[3]}</p>
+
+                  <p>{this.props.ingredients[4]}</p>
+
+                    <p>{this.props.ingredients[5]}</p>
+                      <p>{this.props.ingredients[6]}</p>
+                        <p>{this.props.ingredients[7]}</p>
+                          <p>{this.props.ingredients[8]}</p>
+                            <p>{this.props.ingredients[9]}</p>
+                              <p>{this.props.ingredients[10]}</p>
+                                <p>{this.props.ingredients[11]}</p>
+                                  <p>{this.props.ingredients[12]}</p>
+                                    <p>{this.props.ingredients[13]}</p>
+                                    <p>{this.props.ingredients[14]}</p>
+                                    <p>{this.props.ingredients[15]}</p>
+                                    <p>{this.props.ingredients[16]}</p>
+                                    <p>{this.props.ingredients[17]}</p>
+                                    <p>{this.props.ingredients[18]}</p>
+                                    <p>{this.props.ingredients[19]}</p>    
           </Modal.Body>
           <Modal.Footer>
  
           </Modal.Footer>
+            
         </Modal>
       </ButtonToolbar>
     );

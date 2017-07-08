@@ -22,14 +22,15 @@ class Main extends React.Component {
       img: '',
       instructions: "",
       ingredients: "",
+      ingredientsimg: '',
       show: false,
       userInfo: false,
-      userMeals: "" 
+      userMeals: "",
+      keeplogin: true
     }
 
     this.setUser = this.setUser.bind(this);
     this.userUpdate = this.userUpdate.bind(this);
-    // this.userLogin = this.userLogin.bind(this);
     this.getMyMeal = this.getMyMeal.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -74,21 +75,14 @@ class Main extends React.Component {
     })
   }
 
-  // userLogin(isLoggedIn) {
-  //   this.setState({
-  //     isLoggedIn: isLoggedIn
-  //   })
-  //   console.log(this.state);
-  //   console.log("In main js");
-  // }
-
-  getMyMeal(day, meal, img, instructions, ingredients) {
+  getMyMeal(day, meal, img, instructions, ingredients, ingredientsimg) {
     this.setState({
       day: day,
       meal: meal,
       img: img,
       instructions: instructions,
       ingredients: ingredients,
+      ingredientsimg: ingredientsimg,
       show: true
     })
   }
@@ -105,14 +99,18 @@ class Main extends React.Component {
         <div className="row">
           <Header />
         </div>
+
+
         { /*This is our main component and we will need to specify what we're going to render here depending on what information is present.
                                     If there is a user then setup a function to take the current user info from google and render the app else we should propably have another file that has our
                                     running app components in it.  So you will either get the first instance of our main app or the login screen..... we will need to pass the user state
                                     using function to run on submit to pass user info back here so we can pass it around as props for the app.
                                      <FormOrLogin setUser={this.setUser} setUserInfo={this.setUserInfo} userInfo={this.state.userInfo}
                                   */ }
+
+
         <div className="row">
-          { this.state.user ? 
+          { this.state.user.data ? 
             <CentralPage 
             getMyMeal={ this.getMyMeal } 
             day={this.state.day}
@@ -120,6 +118,7 @@ class Main extends React.Component {
             img={this.state.img}
             instructions={this.state.instructions}
             ingredients={this.state.ingredients}
+            ingredientsimg={this.state.ingredientsimg}
             user={this.state.user} 
             show={ this.state.show } 
             hideModal={ this.hideModal } 

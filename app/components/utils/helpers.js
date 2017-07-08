@@ -76,6 +76,11 @@ var helper = {
 			return result
 
 })
+	},
+	getLogout(){
+		return axios.get('/loggingout').then(function(result){
+			return result
+		})
 	}
 
 };
