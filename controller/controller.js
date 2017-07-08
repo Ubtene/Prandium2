@@ -88,8 +88,7 @@ module.exports = function(app) {
     console.log(userID);
 
     var dayChange = req.body.day;
-
-    console.log(dayChange);
+    console.log('dayChange',dayChange);
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
       console.log("switching meals");
