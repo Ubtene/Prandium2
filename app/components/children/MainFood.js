@@ -36,6 +36,7 @@ class MainFood extends React.Component {
               ingredients={this.props.ingredients}
               show={ this.props.show } 
               hideModal={ this.props.hideModal }
+              setUser = {this.props.setUser}
 
               /> : 
               <DaySelection 

@@ -81,8 +81,7 @@ module.exports = function(app) {
   // routes for removing meals
 
   app.post("/delete/", function(req, res) {
-
-    console.log("got to the delete command");
+     console.log("got to the delete command");
     
     var userID = req.body.user;
 
@@ -95,23 +94,21 @@ module.exports = function(app) {
     userMeals.find({ userID: userID }).exec(function(err, results) {
       console.log("switching meals");
       var mealProperty = results[0].meals;
-      console.log(mealProperty);
       var randomNumber = Math.floor(Math.random() * 50);
-      console.log(mealProperty[randomNumber]);
-      userMeals
-        .findOne(
+      console.log(randomNumber);
+      
+      userMeals.findOne(
           { dayChange },
           { $set: { meal: mealProperty[randomNumber] } },
           { new: true }
-        )
-        .then(function(doc) {
+        ).exec(function(doc) {
           userMeals.find({ userID: userID }).exec(function(err, results) {
             res.send(results);
           });
         });
     });
-  });
 
+});
   // routes for updating user information
   app.put("/api/:id/user_info", (req, res) => {
     let user_id = req.params.id;

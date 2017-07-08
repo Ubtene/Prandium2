@@ -7,7 +7,10 @@ export const Day = props => {
     let user = props.user.data["0"].userID;
     console.log("DAY:", day);
     console.log("USER:", user);
-    deleteMeals(user, day);
+    deleteMeals(user, day).then(function(result){
+      console.log(result);
+      props.setUser(result);
+    }.bind(this));
   };
 
   return (

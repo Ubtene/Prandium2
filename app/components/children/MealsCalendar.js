@@ -36,15 +36,19 @@ class MealsCalendar extends React.Component {
         <div
           key={i}
           className="col-sm-3"
-          onClick={() =>
+        >
+        <div>
+        <button onClick={() =>
             this.props.getMyMeal(
               day.day,
               day.meal.title,
               day.meal.image,
               day.meal.instructions,
               ingredients
-            )}
-        >
+            )}>View Meal </button>
+        </div>
+
+
           <Day
             user={this.props.user}
             key={i}
@@ -52,6 +56,7 @@ class MealsCalendar extends React.Component {
             meal={day.meal.title}
             image={day.meal.image}
             instructions={day.meal.instructions}
+            setUser={this.props.setUser}
           />
         </div>
       );
