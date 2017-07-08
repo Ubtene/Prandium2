@@ -34,6 +34,13 @@ var helper = {
   },
 
 
+  updateMeals(user, day) {
+	  return axios.post('/update/', {user: user, day: day})
+	  .then(data=> {
+		  console.log('meals to delete', data);
+		  return data;
+	  }); 
+	},
   deleteMeals(user, day) {
 	  return axios.post('/delete/', {user: user, day: day})
 	  .then(data=> {
