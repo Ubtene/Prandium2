@@ -3,15 +3,19 @@ import { deleteMeals, updateMeals } from "../utils/helpers";
 
 export const Day = props => {
   const handleDelete = () => {
-    let user = props.user.data["0"].userID;
+    let day = props.day;
     let meal = props.meal;
-    deleteMeals(user, meal);
+    let user = props.user.data["0"].userID;
+    deleteMeals(user, { day, meal });
+    console.log("DELETE", { day, meal });
   };
 
   const handleUpdate = () => {
-    let user = props.user.data["0"].userID;
+    let day = props.day;
     let meal = props.meal;
-    updateMeals(user, meal);
+    let user = props.user.data["0"].userID;
+    updateMeals(user, {day, meal});
+    console.log("UPDATE", { day, meal });
   };
 
   return (
