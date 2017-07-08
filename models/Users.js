@@ -4,10 +4,6 @@ var mongoose = require("mongoose");
     var Schema = mongoose.Schema;
 
       var MealSchema = new Schema({
-        UserName: {
-          type: String
-        },
-
         userID: {
           type: String,
           // unique: true

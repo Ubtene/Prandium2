@@ -30,11 +30,13 @@ class MyModal extends React.Component{
           dialogClassName="custom-modal"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">{this.props.meal}</Modal.Title>
+            <Modal.Title id="contained-modal-title-lg">{this.props.day}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Wrapped Text</h4>
-            <p>I'm in your modal.</p>
+            <img id="modalImg" src={this.props.img} />
+            <h4>{this.props.meal}</h4>
+            <h4>{this.props.ingredients}</h4>
+            <p>{this.props.instructions}</p>
           </Modal.Body>
           <Modal.Footer>
  

@@ -43,7 +43,7 @@ class FormOrLogin extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.isLoggedIn ? <Userform /> : <MainLogin setUser={this.props.setUser} /> }
+        {!this.props.userInfo ? <Userform setUserInfo={this.props.setUserInfo} /> : <MainLogin setUser={this.props.setUser} /> }
       </div>
     );
   }

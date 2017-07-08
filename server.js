@@ -101,7 +101,7 @@ passport.deserializeUser(function(user, done) {
 
 passport.use(new GoogleStrategy({
     clientID: "848838294022-7h0tlqrqq67isbjjav949n6uaor9cocl.apps.googleusercontent.com",
-    clientSecret: "Fn43-sWs-iBcdPHPjnBC3zFe",
+    clientSecret: "V05_x1KklC8XIGls6YCAD-iH",
     callbackURL: "http://localhost:3000/auth/google/callback"
 }, function (accessToken, refreshToken, profile, cb) {
 
@@ -133,13 +133,10 @@ passport.use(new GoogleStrategy({
     }
                 res.send(AnObj);
         }       
-
+          //already have a user
      else {
 
-            console.log("found a user");
-                res.send({
-                    test: "yahoo"
-                });  
+                res.send(results); 
 
      }                    
 

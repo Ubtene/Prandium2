@@ -49,7 +49,9 @@ class UserSurvey extends React.Component {
     });
   }
 
-
+  componentDidMount(){
+    console.log(this.props);
+  }
 
   handleChange(event) {
   {/*}  // this takes in a paramater of the event and upon change changes the state upon the user input */}
@@ -81,11 +83,15 @@ class UserSurvey extends React.Component {
       this.setState({restrictions: restrictions});
 
     {/* Here we're calling the postform function from the helpers file and sending the data from the form to the back end and setting up a promise  */}
-      helpers.postForm(this.state.login, this.state.email, this.state.password, this.state.preferences, this.state.restrictions).then(function(result){
-        console.log(this.state.peanut)
-        // console.log(result);
+      helpers.postForm(this.state.login, this.state.email, this.state.password, this.state.preferences, this.state.restrictions, this.props.user).then(function(result){
+        // console.log(this.state.peanut)
+        console.log(result.data.meals);
+        var UB = "true"
+        this.props.setUserInfo(UB);
+        // this.props.setUserMeals(result.data.meals);
+        this.props.setUser(result);
 
-      });
+      }.bind(this));
     {/* setting initial state for component so we can pass this to the server once the form is filled  */}
       this.setState({
       login: "",

@@ -1,7 +1,7 @@
 {
-  "name": "react-example",
+  "name": "prandium",
   "version": "1.0.0",
-  "description": "",
+  "description": "This might work",
   "main": "public/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -39,5 +39,14 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.24.1",
     "webpack": "^1.13.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ubtene/Prandium2.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Ubtene/Prandium2/issues"
+  },
+  "homepage": "https://github.com/Ubtene/Prandium2#readme"
 }

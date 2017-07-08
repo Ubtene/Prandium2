@@ -1,72 +1,66 @@
-import React from 'react';
+import React from "react";
 
 // import function which uses axios to send days
-import {sendDays} from '../utils/helpers';
-const helpers = require('./../utils/helpers');
+import { sendDays } from "../utils/helpers";
+const helpers = require("./../utils/helpers");
 
 const week = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
 ];
-
 
 class Checkbox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isChecked:false};
+    this.state = { isChecked: false };
     this.handleChange = this.handleChange.bind(this);
   }
-  
-  handleChange () {
-      this.props.toggleCheck(this.props.label);
-      const checked = this.state.isChecked;
-      if (!checked) {
-        this.setState({isChecked: true});
-      } else {
-        this.setState({isChecked: false});
-      }
+
+  handleChange() {
+    this.props.toggleCheck(this.props.label);
+    const checked = this.state.isChecked;
+    if (!checked) {
+      this.setState({ isChecked: true });
+    } else {
+      this.setState({ isChecked: false });
+    }
   }
 
   render() {
     return (
-        <div>
+      <div>
         <label>
-            <input 
-                type='checkbox'
-                checked={this.state.isChecked}
-                onChange={this.handleChange}
-            />
-            {this.props.label}
+          <input
+            type="checkbox"
+            checked={this.state.isChecked}
+            onChange={this.handleChange}
+          />
+          {this.props.label}
         </label>
-        </div>
-    )
+      </div>
+    );
   }
-
 }
 
-
-
 class DaySelection extends React.Component {
-    
-    componentWillMount () {
-        this.selectedCheckboxes = [];
+  componentWillMount() {
+    this.selectedCheckboxes = [];
   }
 
-    constructor() {
+  constructor() {
     super();
 
     const selectedCheckboxes = [];
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
-    
 
-  toggleCheckbox (label) {
+  toggleCheckbox(label) {
     if (this.selectedCheckboxes.includes(label)) {
       let index = this.selectedCheckboxes.indexOf(label);
       this.selectedCheckboxes.splice(index, 1);
@@ -75,48 +69,59 @@ class DaySelection extends React.Component {
     }
   }
 
-    
-  
+  componentDidMount() {
+    console.log("-------------");
+    console.log("user in daysselection");
+    console.log(this.props.user);
 
-  createCheckbox (label) {
-        return <Checkbox label={label} key={label} toggleCheck={this.toggleCheckbox} />;
+    console.log("-------------");
   }
 
-  createCheckboxes () {
-      return week.map((day) => {
-          return this.createCheckbox(day);
-      });
+  createCheckbox(label) {
+    return (
+      <Checkbox label={label} key={label} toggleCheck={this.toggleCheckbox} />
+    );
   }
 
-  handleSubmitForm (event) {
+  createCheckboxes() {
+    return week.map(day => {
+      return this.createCheckbox(day);
+    });
+  }
+
+  handleSubmitForm(event) {
     event.preventDefault();
-    let user_id = this.props.user_id;
-      console.log("user_id:",user_id);
+    // let user = this.props.user_id;
+
     let daysSelected = [];
 
     // make selected days into objects
-    this.selectedCheckboxes.forEach((day) => daysSelected.push({day: day}));
-     console.log('Days Selected:', daysSelected);
-     
+    this.selectedCheckboxes.forEach(day => daysSelected.push({ day: day }));
+    console.log("Days Selected:", daysSelected);
+
     //  send days using axios calls
-     helpers.sendDays(user_id, daysSelected);
+    helpers.sendDays(this.props.user.data.userID, daysSelected).then(
+      function(data) {
+        console.log(data);
+        // this.props.setUserMeals(data);
+        this.props.setUser(data);
+      }.bind(this)
+    );
+    this.props.thisHasMeals("true");
   }
 
   render() {
     return (
-        <div>
-            <h1>For What Days Do You Want Meals?</h1>
-            <h3>Check the boxes below</h3>
-            <form onSubmit = {this.handleSubmitForm}>
-                {this.createCheckboxes()}
-                <input 
-                    value='Get Meal Plan'
-                    type='submit'/>
-            </form>
-        </div>
+      <div className="day-selection">
+        <h1 className="primary-text">On What Days Do You Want Meals?</h1>
+        <h3>Check the boxes below</h3>
+        <form onSubmit={this.handleSubmitForm}>
+          {this.createCheckboxes()}
+          <input className="days-btn" value="Get Meal Plan" type="submit" />
+        </form>
+      </div>
     );
   }
-
 }
 
 export default DaySelection;
