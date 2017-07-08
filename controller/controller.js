@@ -107,6 +107,7 @@ module.exports = function(app) {
         .then(function(doc) {
           userMeals.find({ userID: userID }).exec(function(err, results) {
             res.send(results);
+            console.log("sent your results");
           });
         });
     });

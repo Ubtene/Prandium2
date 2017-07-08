@@ -64,15 +64,18 @@ app.use(
 
 
 mongoose.Promise = global.Promise;
-        
-  mongoose.connect("mongodb://127.0.0.1:27017/Prandium");
-        
+
+// Using `mongoose.connect`...
+var promise = mongoose.connect('mongodb://localhost/myapp', {
+  useMongoClient: true,
+  /* other options */
+});
+ 
  var db = mongoose.connection;
 
  db.on("error", function (err) {
                     console.log("Mongoose Error: ", err);
                 });
-
 db.once("open", function() {
     console.log("Mongoose connection successful.");
 });
@@ -144,8 +147,6 @@ passport.use(new GoogleStrategy({
    });
 
 }));
-
-
 
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
