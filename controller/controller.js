@@ -81,15 +81,23 @@ module.exports = function(app) {
   // routes for removing meals
 
   app.post("/delete/", function(req, res) {
+
     console.log("got to the delete command");
+    
     var userID = req.body.user;
 
+    console.log(userID);
+
     var dayChange = req.body.day;
+
+    console.log(dayChange);
 
     userMeals.find({ userID: userID }).exec(function(err, results) {
       console.log("switching meals");
       var mealProperty = results[0].meals;
+      console.log(mealProperty);
       var randomNumber = Math.floor(Math.random() * 50);
+      console.log(mealProperty[randomNumber]);
       userMeals
         .findOne(
           { dayChange },
