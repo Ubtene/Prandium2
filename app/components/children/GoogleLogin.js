@@ -62,7 +62,7 @@ class GoogleLogin extends React.Component {
       <a
         className="googleLogin"
         onClick={this.handleClick}
-        href="https://morning-thicket-99015.herokuapp.com/auth/google"
+        href="/auth/google"
       >
        <div className='google-logo'></div> Sign in with Google
       </a>
