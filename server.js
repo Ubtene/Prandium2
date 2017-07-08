@@ -6,7 +6,8 @@ var mongoose = require("mongoose");
 var unirest = require("unirest");
 const yelp = require("yelp-fusion");
 const clientId = "pbRwg0shy1Zy_gUqWLpiYQ";
-const clientSecret = "499HGjfOQVwIUWD9ys11menFEA8Ytu77zNrjRCVJ0qYHUQTdpfqdDKNaR7QDYNPy";
+const clientSecret =
+  "499HGjfOQVwIUWD9ys11menFEA8Ytu77zNrjRCVJ0qYHUQTdpfqdDKNaR7QDYNPy";
 const cors = require("cors");
 var userMeals = require("./models/User.js");
 var unirest = require("unirest");
@@ -15,7 +16,6 @@ var GoogleStrategy = require("passport-google-oauth20").Strategy;
 var session = require("express-session");
 var CurrentUser = {};
 var path = require("path");
-
 
 //*************** =====integrate node and webpack======**************
 var app = express();
@@ -26,12 +26,8 @@ var PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.resolve(__dirname, "/public")));
 
-
-app.get("/", function (req, res ) {
-
-
-	res.sendFile(__dirname + "/public/index.html");
-
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 // app.use(function(req, res, next) {
@@ -51,143 +47,132 @@ app.get("/", function (req, res ) {
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(
-    bodyParser.urlencoded({
-        extended: true
-    })
+  bodyParser.urlencoded({
+    extended: true
+  })
 );
 app.use(bodyParser.text());
 app.use(
-    bodyParser.json({
-        type: "application/vnd.api+json"
-    })
+  bodyParser.json({
+    type: "application/vnd.api+json"
+  })
 );
-
 
 mongoose.Promise = global.Promise;
 
-// Using `mongoose.connect`...
-var promise = mongoose.connect('mongodb://localhost/myapp', {
-  useMongoClient: true,
-  /* other options */
-});
- 
- var db = mongoose.connection;
+mongoose.connect("mongodb://127.0.0.1:27017/Prandium");
 
- db.on("error", function (err) {
-                    console.log("Mongoose Error: ", err);
-                });
-db.once("open", function() {
-    console.log("Mongoose connection successful.");
+var db = mongoose.connection;
+
+db.on("error", function(err) {
+  console.log("Mongoose Error: ", err);
 });
+
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
+
 
 app.use(
-    session({
-        secret: "mySecret"
-    })
+  session({
+    secret: "mySecret"
+  })
 );
 // initialize the passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-    // placeholder for custom user serialization
-    // null is for errors
-    done(null, user);
+  // placeholder for custom user serialization
+  // null is for errors
+  done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-    // placeholder for custom user deserialization.
-    // null is for errors
-    done(null, user);
+  // placeholder for custom user deserialization.
+  // null is for errors
+  done(null, user);
 });
 
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID:
+        "848838294022-7h0tlqrqq67isbjjav949n6uaor9cocl.apps.googleusercontent.com",
+      clientSecret: "V05_x1KklC8XIGls6YCAD-iH",
+      callbackURL: "http://localhost:3000/auth/google/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      // console.log(accessToken);
 
-passport.use(new GoogleStrategy({
-    clientID: "848838294022-7h0tlqrqq67isbjjav949n6uaor9cocl.apps.googleusercontent.com",
-    clientSecret: "V05_x1KklC8XIGls6YCAD-iH",
-    callbackURL: "http://localhost:3000/auth/google/callback"
-}, function (accessToken, refreshToken, profile, cb) {
+      cb(null, accessToken, profile, refreshToken);
 
-    // console.log(accessToken);
+      var given_name = profile.name.givenName;
 
-    cb(null, accessToken, profile, refreshToken);
+      var user_id = profile.id;
 
-    var given_name = profile.name.givenName;
+      // console.log(user_id);
 
-    var user_id = profile.id;
+      CurrentUser["user_id"] = user_id;
 
-  // console.log(user_id);
+      CurrentUser["given_name"] = given_name;
 
-    CurrentUser["user_id"] = user_id;
-
-    CurrentUser["given_name"] = given_name;
-
-    app.get("/api/user", function (req, res) {
-
-     
-      userMeals.find({userID: user_id}).exec(function (err, results) {
-
-       if (results.length === 0) {
-
-     var AnObj = {
-
-          Googleid: user_id,
-
+      app.get("/api/user", function(req, res) {
+        userMeals.find({ userID: user_id }).exec(function(err, results) {
+          if (results.length === 0) {
+            var AnObj = {
+              Googleid: user_id
+            };
+            res.send(AnObj);
+          } else {
+            //already have a user
+            res.send(results);
+          }
+        });
+      });
     }
-                res.send(AnObj);
-        }       
-          //already have a user
-     else {
+  )
+);
 
-                res.send(results); 
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
-     }                    
-
-             });
-   });
-
-}));
-
-
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-
-app.get('/auth/google/callback', passport.authenticate('google', {
-        
-    successRedirect: '/',
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/"
     // failureRedirect: '/',
-}));
+  })
+);
 
-app.get('/success', isAuthenticated, function(req, res) {
-    
-    var successObj = {
-        google: true
-    };
-    // console.log(successObj);
-    // res.send(successObj);
-    res.redirect("/");
+app.get("/success", isAuthenticated, function(req, res) {
+  var successObj = {
+    google: true
+  };
+  // console.log(successObj);
+  // res.send(successObj);
+  res.redirect("/");
 });
 
 app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
+  req.logout();
+  res.redirect("/");
 });
 
 function isAuthenticated(req, res, next) {
-    if (req.user) return next();
-    // if req.user does not exist redirect them to the fail page.  Here you can either redirect users back to the login page
-    // res.redirect('/fail');
-    console.log("failure");
+  if (req.user) return next();
+  // if req.user does not exist redirect them to the fail page.  Here you can either redirect users back to the login page
+  // res.redirect('/fail');
+  console.log("failure");
 }
 
 app.use(express.static("./public"));
 
-app.get("/", function(req,res){
-
-      res.sendFile(__dirname + "/public/index.html");
-})
-
-
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // app.post('/yelp', function(req,res){
 
@@ -195,8 +180,7 @@ app.get("/", function(req,res){
 
 // });
 
-
-app.post("/localuser", function(req, res){
+app.post("/localuser", function(req, res) {
   console.log("----------------------");
   console.log(req.params);
   console.log(req.query);
@@ -204,13 +188,11 @@ app.post("/localuser", function(req, res){
   // var myreq = req.body;
   console.log("----------------------");
 
-  res.send('true');
+  res.send("true");
   // res.send(myreq);
 });
 
-
-require("./controller/controller.js") (app);
-
+require("./controller/controller.js")(app);
 
 // Listener
 app.listen(PORT, function() {
