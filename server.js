@@ -162,7 +162,7 @@ passport.use(new GoogleStrategy({
 app.get('https://morning-thicket-99015.herokuapp.com/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
-app.get("/auth/google/callback", passport.authenticate('google', {
+app.get("https://morning-thicket-99015.herokuapp.com/auth/google/auth/google/callback", passport.authenticate('google', {
         
     successRedirect: '/',
     // failureRedirect: '/',
