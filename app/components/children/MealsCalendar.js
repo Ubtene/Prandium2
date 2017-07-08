@@ -35,7 +35,6 @@ class MealsCalendar extends React.Component {
       return (
         <div
           key={i}
-          className="col-sm-3"
           onClick={() =>
             this.props.getMyMeal(
               day.day,

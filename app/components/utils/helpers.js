@@ -35,7 +35,7 @@ var helper = {
 
 
   deleteMeals(user, day) {
-	  return axios.post('/delete/', {user: user, day: day})
+	  return axios.post('/update/', {user: user, day: day})
 	  .then(data=> {
 		  console.log('meals to delete', data);
 		  return data;

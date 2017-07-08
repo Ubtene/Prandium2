@@ -1,33 +1,39 @@
-{/*This component has the modal and gets props from the active meal to get the div to open the modal with no button I passed the show state from here to the main component*/}
+{
+  /*This component has the modal and gets props from the active meal to get the div to open the modal with no button I passed the show state from here to the main component*/
+}
 
+const React = require("react");
+import { Button, Modal, ButtonToolbar } from "react-bootstrap";
 
-const React = require('react');
-import { Button, Modal, ButtonToolbar  } from 'react-bootstrap';
-
-
-class MyModal extends React.Component{
-  constructor(props){
+class MyModal extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       show: false
-    }
-
-
+    };
   }
+<<<<<<< HEAD
 
 
+=======
+  // <Button bsStyle="primary" onClick={this.showModal}>
+  //   Launch demo modal
+  // </Button>
+  // <Button onClick={this.props.hideModal}>Close</Button>
+>>>>>>> mealplan-styling
 
   render() {
     return (
       <ButtonToolbar>
-
         <Modal
           show={this.props.show}
           onHide={this.props.hideModal}
           dialogClassName="custom-modal"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">{this.props.day}</Modal.Title>
+            <Modal.Title id="contained-modal-title-lg">
+              {this.props.day}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <img id="modalImg" src={this.props.img} />
@@ -57,9 +63,7 @@ class MyModal extends React.Component{
             <p>{this.props.ingredients[18]}</p>
             <p>{this.props.ingredients[19]}</p> 
           </Modal.Body>
-          <Modal.Footer>
- 
-          </Modal.Footer>
+          <Modal.Footer />
         </Modal>
       </ButtonToolbar>
     );
