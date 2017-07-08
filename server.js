@@ -62,6 +62,16 @@ app.use(
     })
 );
 
+var databaseUrl = 'mongodb://localhost/myapp';
+
+if(process.env.MONGODB_URI){
+
+  mongoose.connect(process.env.MONGODB_URI)
+
+}else{
+  mongoose.connect(databaseUrl);
+}
+
 
 mongoose.Promise = global.Promise;
 
