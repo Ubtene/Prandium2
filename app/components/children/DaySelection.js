@@ -54,6 +54,9 @@ class DaySelection extends React.Component {
 
   constructor() {
     super();
+    this.state = {
+      warning: ''
+   }
 
     const selectedCheckboxes = [];
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
@@ -100,6 +103,8 @@ class DaySelection extends React.Component {
     console.log("Days Selected:", daysSelected);
 
     //  send days using axios calls
+
+    if(daysSelected[0]){
     helpers.sendDays(this.props.user.data.userID, daysSelected).then(
       function(data) {
         console.log(data);
@@ -108,13 +113,19 @@ class DaySelection extends React.Component {
       }.bind(this)
     );
     this.props.thisHasMeals("true");
+  } else {
+     this.setState({
+       warning: "Please select days to continue"
+    })
   }
+}
 
   render() {
     return (
       <div className="day-selection">
         <h1 className="primary-text">On What Days Do You Want Meals?</h1>
         <h3>Check the boxes below</h3>
+        <h3>{this.state.warning}</h3>
         <form onSubmit={this.handleSubmitForm}>
           {this.createCheckboxes()}
           <input className="days-btn" value="Get Meal Plan" type="submit" />
