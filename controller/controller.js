@@ -80,7 +80,7 @@ module.exports = function(app) {
 
   // routes for removing meals
 
-  app.post("/delete/", function(req, res) {
+  app.post("/update/", function(req, res) {
     console.log("got to the delete command");
     var userID = req.body.user;
 

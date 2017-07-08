@@ -12,19 +12,16 @@ export const Day = props => {
 
   return (
     <div className="day-wrapper">
+    
       <div className="day-name">
         {props.day}
       </div>
-      <div className="meals">
-        <div className="lunch">
+      <div className="meal">
           {props.meal}
-          {/*  <button className="">Delete Meal</button>*/}
-        </div>
       </div>
 
+      <div className='refresh-meal-btn'><i className="fa fa-refresh" aria-hidden="true"></i></div>
       <img className="meal-img" alt="Image of meal" src={props.image} />
-      <button onClick={handleClick}>Update Meals</button>
-      <button>Delete Meals</button>
     </div>
   );
 };
