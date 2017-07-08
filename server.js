@@ -27,7 +27,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.static(path.resolve(__dirname, "/public")));
 
 
-app.get("/", function (res, res ) {
+app.get("/", function (req, res ) {
 
 
 	res.sendFile(__dirname + "/public/index.html");
@@ -178,7 +178,7 @@ function isAuthenticated(req, res, next) {
     // if req.user does not exist redirect them to the fail page.  Here you can either redirect users back to the login page
     // res.redirect('/fail');
     console.log("failure");
-};
+}
 
 app.use(express.static("./public"));
 

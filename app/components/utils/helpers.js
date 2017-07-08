@@ -41,6 +41,7 @@ var helper = {
 		  return data;
 	  }); 
 	},
+  
   deleteMeals(user, meal) {
 	  return axios.post('/delete/', {user: user, day: meal})
 	  .then(data=> {
