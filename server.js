@@ -113,8 +113,8 @@ passport.deserializeUser(function(user, done) {
 
 
 passport.use(new GoogleStrategy({
-    clientID: "848838294022-7h0tlqrqq67isbjjav949n6uaor9cocl.apps.googleusercontent.com",
-    clientSecret: "V05_x1KklC8XIGls6YCAD-iH",
+    clientID: "690117037135-msqbj0ihidf8d1nuhibcjht651n4e5qd.apps.googleusercontent.com",
+    clientSecret: "L5NBrruaY1G2bK0EkdT6Jz-e",
     callbackURL: "https://morning-thicket-99015.herokuapp.com/auth/google/callback"
 }, function (accessToken, refreshToken, profile, cb) {
 
@@ -159,10 +159,10 @@ passport.use(new GoogleStrategy({
 }));
 
 
-app.get('https://morning-thicket-99015.herokuapp.com/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
-app.get("https://morning-thicket-99015.herokuapp.com/auth/google/callback", passport.authenticate('google', {
+app.get("/auth/google/callback", passport.authenticate('google', {
         
     successRedirect: '/',
     // failureRedirect: '/',
