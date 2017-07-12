@@ -107,7 +107,8 @@ module.exports = function(app) {
             res.send(results);
             console.log("sent your results");
           });
-        });
+        }).save()
+        ;
     });
   });
 
@@ -131,7 +132,7 @@ module.exports = function(app) {
 
     var password = req.body.restrictions.password;
 
-    var preferences = req.body.restrictions.preference;
+    var preferences = req.body.restrictions.preference+"%2Cdinner%2Cmain+course%2C+lunch+%2main+dish";
 
     var restriction = req.body.restrictions.restriction;
 
